@@ -1,6 +1,8 @@
 # coding=utf-8
 
-"""
+"""Remove the time
+http://www.codewars.com/kata/56b0ff16d4aa33e5bb00008e
+
 You're re-designing a blog and the blog's posts have the following format
 for showing the date and time a post was made:
 
