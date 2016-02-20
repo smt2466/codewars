@@ -9,19 +9,20 @@ from src.remove_the_time import shorten_to_date
 
 
 def test_one_digit_day_number():
-    assert 'Monday February 2' == shorten_to_date('Monday February 2, 8pm')
+    assert shorten_to_date('Monday February 2, 8pm') == 'Monday February 2'
 
 
 def test_two_digit_day_number():
-    assert 'Tuesday May 29' == shorten_to_date('Tuesday May 29, 8pm')
+    assert shorten_to_date('Tuesday May 29, 8pm') == 'Tuesday May 29'
 
 
 def test_two_digit_hour():
-    assert 'Tuesday January 29' == shorten_to_date('Tuesday January 29, 10pm')
+    assert shorten_to_date('Tuesday January 29, 10pm') == 'Tuesday January 29'
 
 
 def test_am_time():
-    assert 'Friday May 2' == shorten_to_date('Friday May 2, 9am')
+    assert shorten_to_date('Friday May 2, 9am') == 'Friday May 2'
+
 
 def test_short_week_day():
-    assert 'Wed September 1' == shorten_to_date('Wed September 1, 3am')
+    assert shorten_to_date('Wed September 1, 3am') == 'Wed September 1'

@@ -1,5 +1,5 @@
 # coding=utf-8
-# pylint: disable=missing-docstring
+# pylint: disable=missing-docstring,redefined-outer-name
 
 """
 Genetic Algorithm Series - #2 Mutation tests
@@ -21,19 +21,19 @@ def zero():
 
 
 def test_100_mutate_zero(one, zero):
-    assert one == mutate(zero, 1)
+    assert mutate(zero, 1) == one
 
 
 def test_100_mutate_one(one, zero):
-    assert zero == mutate(one, 1)
+    assert mutate(one, 1) == zero
 
 
 def test_0_mutate_zero(zero):
-    assert zero == mutate(zero, 0)
+    assert mutate(zero, 0) == zero
 
 
 def test_0_mutate_one(one):
-    assert one == mutate(one, 0)
+    assert mutate(one, 0) == one
 
 
 def test_50_mutate_zero(zero):
@@ -45,16 +45,16 @@ def test_50_mutate_one(one):
 
 
 def test_100_mutate_gen_1():
-    assert '0' == mutate_gen('1', 1)
+    assert mutate_gen('1', 1) == '0'
 
 
 def test_100_mutate_gen_0():
-    assert '1' == mutate_gen('0', 1)
+    assert mutate_gen('0', 1) == '1'
 
 
 def test_0_mutate_gen_1():
-    assert '1' == mutate_gen('1', 0)
+    assert mutate_gen('1', 0) == '1'
 
 
 def test_0_mutate_gen_0():
-    assert '0' == mutate_gen('0', 0)
+    assert mutate_gen('0', 0) == '0'

@@ -19,9 +19,41 @@ result fails, trying again should work.
 from random import random
 
 
-def mutate_gen(gen, p):
-    return str(int(not int(gen))) if random() < p else gen
+def mutate_gen(gen, prob):
+    """Mutate one gen
+
+    Args:
+        gen (str): '0' or '1'
+        prob (float): Mutation probability 0..1
+
+    Returns:
+        str: '1' or '0'
+
+    Examples:
+        >>> mutate_gen('1', 1)
+        '0'
+        >>> mutate_gen('0', 1)
+        '1'
+        >>> mutate_gen('1', 0)
+        '1'
+    """
+    return str(int(not int(gen))) if random() < prob else gen
 
 
-def mutate(chromosome, p):
-    return ''.join(mutate_gen(gen, p) for gen in chromosome)
+def mutate(chromosome, prob):
+    """Mutate sequence of gens
+
+    Args:
+        chromosome (str): Sequence of gens '110010110'
+        prob (float): Gen mutation probability
+
+    Returns:
+        str: Mutation result '001101001'
+
+    Examples:
+        >>> mutate('101010', 1)
+        '010101'
+        >>> mutate('101010', 0)
+        '101010'
+    """
+    return ''.join(mutate_gen(gen, prob) for gen in chromosome)

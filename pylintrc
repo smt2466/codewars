@@ -1,0 +1,7 @@
+[MESSAGES CONTROL]
+disable=locally-disabled
+
+[REPORTS]
+# Simplify pylint reports
+reports=no
+

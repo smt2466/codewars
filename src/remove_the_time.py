@@ -21,4 +21,16 @@ Assume shortenToDate's output will be the shortened string, e.g.,
 
 
 def shorten_to_date(long_date):
+    """Remove time from date string
+
+    Args:
+        long_date (str): Date and time in format 'Monday February 2, 8pm'
+
+    Returns:
+        str: Date without time
+
+    Examples:
+        >>> shorten_to_date('Monday February 2, 8pm')
+        'Monday February 2'
+    """
     return long_date.split(',')[0]
