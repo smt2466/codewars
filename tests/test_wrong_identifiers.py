@@ -2,7 +2,7 @@
 # pylint: disable=missing-docstring
 
 """
-Module docstring
+What's wrong with these identifiers? tests
 """
 
 import pytest
