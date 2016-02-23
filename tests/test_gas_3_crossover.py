@@ -1,8 +1,8 @@
 # coding=utf-8
-# pylint: disable=missing-docstring,redefined-outer-name
+# pylint: disable=missing-docstring
 
 """
-Genetic Algorithm Series - #2 Mutation tests
+Genetic Algorithm Series - #3 Crossover
 """
 
 from src.gas_3_crossover import crossover
