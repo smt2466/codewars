@@ -43,4 +43,3 @@ def diamond(num):
     middle = '*'*num + '\n'
     bottom = top[::-1]
     return ''.join(top) + middle + ''.join(bottom)
-
