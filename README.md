@@ -6,6 +6,13 @@
 
 [Codewars](http://www.codewars.com/) Kata Python solutions
 
+## Project Structure
+
+- [src](src/) - kata solutions sorted by rank
+- [tests](tests/) - tests to kata solutions (`test_<solution-filename>.py`)
+  also sorted by rank
+- [utils](utils/) - simple scripts I wrote to handle the project routines
+
 ## Prerequisites
 
 - Python 2+ only (Python 3 is not supported by codewars right now)
@@ -24,3 +31,9 @@ python -m pytest --doctest-modules
 ```bash
 python -m pylint src/ tests/
 ```
+
+## Utils
+
+- [Kata Sorter](utils/kata_solver.py) - rearrange file-mess from `src/` and
+  `tests/` by rank sub folders, uses Codewars API and `concurrent.futures` for
+  multiple request handling
