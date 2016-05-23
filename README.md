@@ -34,6 +34,7 @@ python -m pylint src/ tests/
 
 ## Utils
 
-- [Kata Sorter](utils/kata_sorter.py) - rearrange file-mess from `src/` and
+- [Kata Sorter](utils/kata_sorter.py) - rearranges file-mess from `src/` and
   `tests/` by rank sub folders, uses Codewars API and `concurrent.futures` for
-  multiple request handling
+  multiple request handling. Requires `ACCESS_KEY` environment variable to be
+  set (Codewars [API key](http://dev.codewars.com/#authentication))
