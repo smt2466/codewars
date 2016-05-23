@@ -34,6 +34,6 @@ python -m pylint src/ tests/
 
 ## Utils
 
-- [Kata Sorter](utils/kata_solver.py) - rearrange file-mess from `src/` and
+- [Kata Sorter](utils/kata_sorter.py) - rearrange file-mess from `src/` and
   `tests/` by rank sub folders, uses Codewars API and `concurrent.futures` for
   multiple request handling
