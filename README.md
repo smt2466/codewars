@@ -9,7 +9,7 @@
 ## Prerequisites
 
 - Python 2+ only (Python 3 is not supported by codewars right now)
-- Requirements: `pip install -r requirements.txt` (virtualenv strongly suggested)
+- Requirements: `pip install -r requirements.txt` (`virtualenv` strongly suggested)
 
 ## Tests
 
