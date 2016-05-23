@@ -8,12 +8,8 @@
 
 ## Prerequisites
 
-Python 2+ only (Python 3 is not supported by codewars right now)
-
-Requirements:
-```bash
-pip install -r requirements.txt
-```
+- Python 2+ only (Python 3 is not supported by codewars right now)
+- Requirements: `pip install -r requirements.txt` (virtualenv strongly suggested)
 
 ## Tests
 
@@ -26,5 +22,5 @@ python -m pytest --doctest-modules
 ### Syntax Validation
 
 ```bash
-python -m pylint src tests
+python -m pylint src/ tests/
 ```
