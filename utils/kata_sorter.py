@@ -1,4 +1,7 @@
-"""Rearrange solutions and tests by ranks"""
+"""Rearrange solutions and tests by ranks
+
+Read more about the script in the repository README
+"""
 
 import os
 import re

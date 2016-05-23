@@ -35,6 +35,28 @@ python -m pylint src/ tests/
 ## Utils
 
 - [Kata Sorter](utils/kata_sorter.py) - rearranges file-mess from `src/` and
-  `tests/` by rank sub folders, uses Codewars API and `concurrent.futures` for
-  multiple request handling. Requires `ACCESS_KEY` environment variable to be
-  set (Codewars [API key](http://dev.codewars.com/#authentication))
+  `tests/` by rank subfolders
+
+### Kata Sorter
+
+Initially I did not sort solution and test files by ranks, so after a while
+I got a file-mess in both `src/` and `tests/` directories. Because of big file
+number I wrote a simple utility to auto-rearrange files between rank subfolders.
+
+I have a standard docstring at the beginning of each solution file, which
+contains url of the kata. The url itself holds slug or id of the kata.
+With this in mind we can easily connect to [Codewars API](http://dev.codewars.com/)
+and ask it about kata rank.
+
+I used an old but good method to store sensitive information
+([API key](http://dev.codewars.com/#authentication) in our case) - via
+environment variables. Specifically - `ACCESS_KEY`. So set it up before
+running the script or an error will occur.
+
+To send HTTP requests to [Codewars API](http://dev.codewars.com/) I used
+`concurrent.futures` for better performance.
+
+## Contacts
+
+Feel free to contact me if you have any questions or problems with this
+repository, I would love to help!
