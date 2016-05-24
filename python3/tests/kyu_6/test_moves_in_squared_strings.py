@@ -4,7 +4,9 @@
 
 import pytest
 
-from python3.src.moves_in_squared_strings_2 import rot, selfie_and_rot, oper
+from python3.src.kyu_6.moves_in_squared_strings_2 import (
+    rot, selfie_and_rot, oper
+)
 
 ROT_EXAMPLES = (
     ('strng', 'expected'),
