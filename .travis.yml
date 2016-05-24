@@ -9,10 +9,8 @@ python:
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
-  - echo $TRAVIS_PYTHON_VERSION
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then export SUBPATH=python2; else export SUBPATH=python3; fi
-  - echo $SUBPATH
 
 script:
-  - python -m pytest --doctest-modules src/$SUBPATH/ tests/$SUBPATH/  # Unit tests
-  - python -m pylint src/$SUBPATH/ tests/$SUBPATH/                    # Syntax validation
+  - python -m pytest --doctest-modules $SUBPATH/    # Unit tests
+  - python -m pylint $SUBPATH/src/ $SUBPATH/tests/  # Syntax validation

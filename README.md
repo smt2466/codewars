@@ -8,9 +8,10 @@
 
 ## Project Structure
 
-- [src](src/) - kata solutions sorted by rank
-- [tests](tests/) - tests to kata solutions (`test_<solution-filename>.py`)
-  also sorted by rank
+- [python2](python2/) or [python3](python3/) language version
+    - [src](src/) - kata solutions sorted by rank
+    - [tests](tests/) - tests to kata solutions (`test_<solution-filename>.py`)
+      also sorted by rank
 - [utils](utils/) - simple scripts I wrote to handle the project routines
 
 ## Prerequisites
@@ -25,13 +26,13 @@ Change `python2` to `python3` if needed
 ### Unit and Doc Tests
 
 ```bash
-python -m pytest --doctest-modules src/python2/ tests/python2/
+python -m pytest --doctest-modules python2/
 ```
 
 ### Syntax Validation
 
 ```bash
-python -m pylint src/python2/ tests/python2/
+python -m pylint python2/src/ python2/tests/
 ```
 
 ## Utils
