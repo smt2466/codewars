@@ -8,7 +8,7 @@ python:
 
 install:
   - pip install --upgrade pip
-  - pip install requirements.txt
+  - pip install -r requirements.txt
 
 script:
   - if [[$TRAVIS_PYTHON_VERSION == 2*]]; then export TESTS=python2; else export TESTS=python3; fi

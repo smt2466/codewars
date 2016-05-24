@@ -15,21 +15,23 @@
 
 ## Prerequisites
 
-- Python 2+ only (Python 3 is not supported by codewars right now)
+- [Old katas](src/python2/) use Python 2, [new katas](src/python3/) - Python 3
 - Requirements: `pip install -r requirements.txt` (`virtualenv` strongly suggested)
 
 ## Tests
 
+Change `python2` to `python3` if needed
+
 ### Unit and Doc Tests
 
 ```bash
-python -m pytest --doctest-modules
+python -m pytest --doctest-modules src/python2/ tests/python2/
 ```
 
 ### Syntax Validation
 
 ```bash
-python -m pylint src/ tests/
+python -m pylint src/python2/ tests/python2/
 ```
 
 ## Utils
