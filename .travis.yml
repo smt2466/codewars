@@ -3,12 +3,14 @@
 language: python
 
 python:
-  - '2.7'
+  - 2.7
+  - 3.4
 
 install:
   - pip install --upgrade pip
-  - pip install -r requirements.txt
+  - pip install requirements.txt
 
 script:
-  - python -m pytest --doctest-modules  # Unit tests
-  - python -m pylint src/ tests/        # Syntax validation
+  - if [[$TRAVIS_PYTHON_VERSION == 2*]]; then export TESTS=python2; else export TESTS=python3; fi
+  - python -m pytest --doctest-modules src/$TESTS/ tests/$TESTS/  # Unit tests
+  - python -m pylint src/$TESTS/ tests/$TESTS/                    # Syntax validation
