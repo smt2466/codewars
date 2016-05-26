@@ -12,5 +12,5 @@ install:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then export SUBPATH=python2; else export SUBPATH=python3; fi
 
 script:
-  - python -m pytest --doctest-modules $SUBPATH/    # Unit tests
-  - python -m pylint $SUBPATH/src/ $SUBPATH/tests/  # Syntax validation
+  - python -m pytest --doctest-modules $SUBPATH/ tests/$SUBPATH/    # Unit tests
+  - python -m pylint $SUBPATH/ tests/$SUBPATH/                      # Syntax validation
