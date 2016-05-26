@@ -8,15 +8,14 @@
 
 ## Project Structure
 
-- [python2](python2/) or [python3](python3/) language version
-    - [src](src/) - kata solutions sorted by rank
-    - [tests](tests/) - tests to kata solutions (`test_<solution-filename>.py`)
-      also sorted by rank
+- [python2](python2/) - Python 2 katas
+- [python3](python3/) - Python 3 katas
+- [tests](tests/) - tests for both language version katas and utils
 - [utils](utils/) - simple scripts I wrote to handle the project routines
 
 ## Prerequisites
 
-- [Old katas](src/python2/) use Python 2, [new katas](src/python3/) - Python 3
+- [Old katas](python2/) use Python 2, [new katas](python3/) - Python 3
 - Requirements: `pip install -r requirements.txt` (`virtualenv` strongly suggested)
 
 ## Tests
@@ -26,13 +25,13 @@ Change `python2` to `python3` if needed
 ### Unit and Doc Tests
 
 ```bash
-python -m pytest --doctest-modules python2/
+python -m pytest --doctest-modules python2/ tests/python2/
 ```
 
 ### Syntax Validation
 
 ```bash
-python -m pylint python2/src/ python2/tests/
+python -m pylint python2/ tests/python2/
 ```
 
 ## Utils
