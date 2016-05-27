@@ -18,9 +18,14 @@ def get_kata_data(slug, access_key):
     url = 'https://www.codewars.com/api/v1/code-challenges/%s' % slug
     params = {'access_key': access_key}
     response = requests.get(url, params)
-    return response.json()
+
+    if response.status_code != 200:
+        raise ValueError
+    else:
+        return response.json()
 
 
 def main(slug):
+    """Create new solution template"""
     access_key = get_env_variable('ACCESS_KEY')
-    kata = get_kata_data(slug, access_key)
+    get_kata_data(slug, access_key)
