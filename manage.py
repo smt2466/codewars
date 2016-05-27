@@ -1,5 +1,7 @@
 import click
 
+from utils import new_solution
+
 
 @click.group()
 def main():
@@ -9,7 +11,7 @@ def main():
 @main.command()
 @click.argument('slug')
 def new(slug):
-    click.echo('Start new... %s' % slug)
+    new_solution.main(slug)
 
 if __name__ == '__main__':
     main()
