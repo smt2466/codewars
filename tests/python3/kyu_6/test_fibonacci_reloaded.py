@@ -1,5 +1,7 @@
 # pylint: disable=missing-docstring
 
+"""Fibonacci Reloaded"""
+
 import pytest
 
 from python3.kyu_6.fibonacci_reloaded import fib
