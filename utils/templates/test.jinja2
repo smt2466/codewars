@@ -1,0 +1,21 @@
+# pylint: disable=missing-docstring
+
+"""{{ title }}"""
+
+import pytest
+
+from {{ python_version }}.{{ solution_filename }} import {{ solution_function_name }}
+
+
+EXAMPLES = (
+    ({% for argument in arguments %}'{{ argument }}'{% endfor %}, 'expected'),
+    [
+        ( , ),
+        ( , ),
+    ]
+)
+
+
+@pytest.mark.parametrize(*EXAMPLES)
+def test_returns_correct_result({% for argument in arguments %}{{ argument }}{% endfor %}, expected):
+    assert {{ solution_function_name }}({% for argument in arguments %}{{ argument }}{% endfor %}) == expected
