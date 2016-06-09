@@ -10,8 +10,9 @@ def main():
 
 @main.command()
 @click.argument('slug')
-def new(slug):
-    new_solution.main(slug)
+@click.argument('python')
+def new(slug, python):
+    new_solution.main(slug, python)
 
 if __name__ == '__main__':
     main()

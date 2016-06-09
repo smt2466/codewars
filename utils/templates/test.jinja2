@@ -1,21 +1,21 @@
 # pylint: disable=missing-docstring
 
-"""{{ title }}"""
+"""{{ kata.title }}"""
 
 import pytest
 
-from {{ python_version }}.{{ solution_filename }} import {{ solution_function_name }}
+from {{ kata.python }}.kyu_{{ rank }}.{{ kata.filename }} import function
 
 
 EXAMPLES = (
-    ({% for argument in arguments %}'{{ argument }}'{% endfor %}, 'expected'),
+    ('arg', 'expected'),
     [
-        ( , ),
-        ( , ),
+        (1 , 2),
+        (3 , 4),
     ]
 )
 
 
 @pytest.mark.parametrize(*EXAMPLES)
-def test_returns_correct_result({% for argument in arguments %}{{ argument }}{% endfor %}, expected):
-    assert {{ solution_function_name }}({% for argument in arguments %}{{ argument }}{% endfor %}) == expected
+def test_returns_correct_result(arg, expected):
+    assert function(arg) == expected
