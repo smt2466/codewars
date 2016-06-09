@@ -1,9 +1,9 @@
-astroid==1.4.5
+astroid==1.4.6
 colorama==0.3.7
 futures==3.0.5
 lazy-object-proxy==1.2.2
 py==1.4.31
-pylint==1.5.5
+pylint==1.5.6
 pytest==2.9.2
 requests==2.10.0
 six==1.10.0
