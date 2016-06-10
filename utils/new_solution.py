@@ -1,5 +1,6 @@
 """Generate new kata solution and tests template"""
 
+from collections import namedtuple
 import os
 
 from jinja2 import Environment, FileSystemLoader
@@ -10,6 +11,8 @@ STRING_LENGTH = 50
 PATH = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_ENVIRONMENT = Environment(
     loader=FileSystemLoader(os.path.join(PATH, 'templates')))
+
+Kata = namedtuple('Kata', 'name url slug rank description')
 
 
 def render_template(template_filename, context):
@@ -36,24 +39,49 @@ def get_kata_data(slug, access_key):
         return response.json()
 
 
-def create_solution_file(data, python):
-    description = data['description']
+def limit(line):
+    pass
+
+
+def format_description(description, string_limit=80):
+    result = []
+    lines = description.split('\n')
+    for line in lines:
+        result.extend(limit(line))
+
+
+
+def process_kata_data(data):
+    """Convert raw kata data into manageable namedtuple
+
+    Args:
+        data {dict}: Converted to dict json data from response
+
+    Returns:
+        namedtuple: Kata(name, url, slug, rank, description)
+    """
     name = data['name']
+    url = data['url']
     slug = data['slug']
     rank = str(abs(data['rank']['id']))
-    url = data['url']
+    description = data['description']
+    return Kata(name, url, slug, rank, description)
 
-    filename = slug.replace('-', '_') + '.py'
-    full_path = os.path.join('python' + python, 'kyu_' + rank, filename)
+
+def create_solution_file(data, python):
+    kata = process_kata_data(data)
+
+    filename = kata.slug.replace('-', '_') + '.py'
+    full_path = os.path.join('python' + python, 'kyu_' + kata.rank, filename)
 
     context = {
         'kata': {
-            'title': name,
+            'title': kata.name,
             'python': python,
             'filename': filename,
-            'url': url,
-            'description': description,
-            'rank': rank,
+            'url': kata.url,
+            'description': kata.description,
+            'rank': kata.rank,
         }
     }
 
