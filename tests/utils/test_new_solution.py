@@ -13,17 +13,6 @@ from utils.new_solution import (
 )
 
 
-# class TestMe:
-#
-#     @pytest.fixture
-#     def abc(self, monkeypatch):
-#         monkeypatch.setattr('utils.new_solution.requests.get', 'abc')
-#
-#
-#     def test_function(self, abc):
-#         assert function() == 'abc'
-
-
 class TestGetKataData:
 
     @pytest.fixture
@@ -41,25 +30,25 @@ class TestGetKataData:
         assert get_kata_data('slug', 'access_key') == response.json()
 
     def test_called_with_correct_url_and_api_key(self, response):
-        url = 'https://www.codewars.com/api/v1/code-challenges/%s'
         slug = 'kata_slug'
+        url = 'https://www.codewars.com/api/v1/code-challenges/%s' % slug
         api_key = 'api_key'
 
         get_kata_data(slug, api_key)
 
-        assert response
+        assert
 
-    def test_called_with_correct_url_and_api_key(self):
-        url = 'https://www.codewars.com/api/v1/code-challenges/%s'
-        slug = 'kata_slug'
-        api_key = 'api_key'
-
-        get_kata_data(slug, api_key)
-
-        self.assertEqual(self.mock_get.call_count, 1)
-        self.assertEqual(
-            self.mock_get.call_args,
-            mock.call(url % slug, {'access_key': api_key}))
+    # def test_called_with_correct_url_and_api_key(self):
+    #     url = 'https://www.codewars.com/api/v1/code-challenges/%s'
+    #     slug = 'kata_slug'
+    #     api_key = 'api_key'
+    #
+    #     get_kata_data(slug, api_key)
+    #
+    #     self.assertEqual(self.mock_get.call_count, 1)
+    #     self.assertEqual(
+    #         self.mock_get.call_args,
+    #         mock.call(url % slug, {'access_key': api_key}))
 
     # def test_raise_error_if_response_status_code_is_not_200(self):
     #     self.response.status_code = 404

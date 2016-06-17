@@ -50,7 +50,6 @@ def format_description(description, string_limit=80):
         result.extend(limit(line))
 
 
-
 def process_kata_data(data):
     """Convert raw kata data into manageable namedtuple
 
