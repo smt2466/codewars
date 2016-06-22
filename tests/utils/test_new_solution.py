@@ -16,46 +16,44 @@ from utils.new_solution import (
 class TestGetKataData:
 
     @pytest.fixture
-    def response(self, monkeypatch):
+    def answer_ok(self):
         answer = mock.Mock()
         answer.status_code = 200
-
-        def get(*_):
-            return answer
-
-        monkeypatch.setattr('utils.new_solution.requests.get', get)
         return answer
 
-    def test_returns_json_from_request(self, response):
-        assert get_kata_data('slug', 'access_key') == response.json()
+    @pytest.fixture
+    def answer_fail(self):
+        answer = mock.Mock()
+        answer.status_code = 404
+        return answer
 
-    def test_called_with_correct_url_and_api_key(self, response):
+    def test_returns_json_from_request(self, monkeypatch, answer_ok):
+        mock_get = mock.Mock(return_value=answer_ok)
+        monkeypatch.setattr('utils.new_solution.requests.get', mock_get)
+
+        assert get_kata_data('slug', 'access_key') == answer_ok.json()
+
+    def test_called_with_correct_url_and_api_key(self, monkeypatch, answer_ok):
+        mock_get = mock.Mock(return_value=answer_ok)
+        monkeypatch.setattr('utils.new_solution.requests.get', mock_get)
+
         slug = 'kata_slug'
         url = 'https://www.codewars.com/api/v1/code-challenges/%s' % slug
         api_key = 'api_key'
 
         get_kata_data(slug, api_key)
 
-        assert
+        assert mock_get.call_count == 1
+        assert mock_get.call_args == mock.call(url, {'access_key': api_key})
 
-    # def test_called_with_correct_url_and_api_key(self):
-    #     url = 'https://www.codewars.com/api/v1/code-challenges/%s'
-    #     slug = 'kata_slug'
-    #     api_key = 'api_key'
-    #
-    #     get_kata_data(slug, api_key)
-    #
-    #     self.assertEqual(self.mock_get.call_count, 1)
-    #     self.assertEqual(
-    #         self.mock_get.call_args,
-    #         mock.call(url % slug, {'access_key': api_key}))
+    def test_raise_error_if_response_status_code_is_not_200(self, monkeypatch, answer_fail):
+        mock_get = mock.Mock(return_value=answer_fail)
+        monkeypatch.setattr('utils.new_solution.requests.get', mock_get)
 
-    # def test_raise_error_if_response_status_code_is_not_200(self):
-    #     self.response.status_code = 404
-    #     with pytest.raises(ValueError):
-    #         get_kata_data('slug', 'access_key')
+        with pytest.raises(ValueError):
+            get_kata_data('slug', 'access_key')
 
-#
+
 # class ProcessKataDataTest:
 #
 #     def test_returns_correct_namedtuple(self):
