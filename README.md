@@ -26,7 +26,7 @@ environment variables. So set it up before running the utils scripts or an
 error will occur. Solutions or kata tests do not rely on the system variables
 
 | Variable | Note |
-| - | - |
+| :---: | :---: |
 | ACCESS_KEY | Your unique Codewars [API key](http://dev.codewars.com/#authentication) |
 
 ## Tests
