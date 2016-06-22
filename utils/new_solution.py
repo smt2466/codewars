@@ -6,7 +6,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 import requests
 
-STRING_LENGTH = 50
+STRING_LENGTH = 30
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_ENVIRONMENT = Environment(
@@ -39,17 +39,6 @@ def get_kata_data(slug, access_key):
         return response.json()
 
 
-def limit(line):
-    pass
-
-
-def format_description(description, string_limit=80):
-    result = []
-    lines = description.split('\n')
-    for line in lines:
-        result.extend(limit(line))
-
-
 def process_kata_data(data):
     """Convert raw kata data into manageable namedtuple
 
@@ -67,45 +56,58 @@ def process_kata_data(data):
     return Kata(name, url, slug, rank, description)
 
 
-def create_solution_file(data, python):
-    kata = process_kata_data(data)
-
-    filename = kata.slug.replace('-', '_') + '.py'
-    full_path = os.path.join('python' + python, 'kyu_' + kata.rank, filename)
+def create_file(data, python, file_type):
+    if file_type == 'solution':
+        filename = data.slug.replace('-', '_') + '.py'
+        full_path = os.path.join(python, 'kyu_' + data.rank, filename)
+    elif file_type == 'test':
+        filename = 'test_' + data.slug.replace('-', '_') + '.py'
+        full_path = os.path.join('tests', python, 'kyu_' + data.rank, filename)
+    else:
+        raise ValueError('Unknown file type')
 
     context = {
         'kata': {
-            'title': kata.name,
+            'title': data.name,
             'python': python,
-            'filename': filename,
-            'url': kata.url,
-            'description': kata.description,
-            'rank': kata.rank,
+            'filename': data.slug.replace('-', '_'),
+            'url': data.url,
+            'description': data.description,
+            'rank': data.rank,
         }
     }
 
-    template = render_template('solution.jinja2', context) + '\n'
+    template = render_template('%s.jinja2' % file_type, context) + '\n'
 
-    with open(full_path, 'w') as solution:
-        solution.write(template)
+    if not os.path.isfile(full_path):
+        with open(full_path, 'w') as file:
+            file.write(template)
+
+
+def create_solution_file(data, python):
+    create_file(data, python, 'solution')
 
 
 def create_test_file(data, python):
-    pass
+    create_file(data, python, 'test')
 
 
 def main(slug, python):
     """Create new solution template"""
     access_key = get_env_variable('ACCESS_KEY')
 
-    print('Get kata data...'.ljust(STRING_LENGTH)),
+    print('Get kata data...'.ljust(STRING_LENGTH), end=' ')
     data = get_kata_data(slug, access_key)
     print('DONE')
 
-    print('Create solution file...'.ljust(STRING_LENGTH))
+    print('Process data...'.ljust(STRING_LENGTH), end=' '),
+    data = process_kata_data(data)
+    print('DONE')
+
+    print('Create solution file...'.ljust(STRING_LENGTH), end=' ')
     create_solution_file(data, python)
     print('DONE')
 
-    print('Create test file...'.ljust(STRING_LENGTH))
+    print('Create test file...'.ljust(STRING_LENGTH), end=' ')
     create_test_file(data, python)
     print('DONE')

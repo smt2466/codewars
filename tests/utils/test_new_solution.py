@@ -6,7 +6,6 @@ import pytest
 
 from utils.new_solution import (
     Kata,
-    format_description,
     get_kata_data,
     process_kata_data,
 )
@@ -79,25 +78,3 @@ class TestProcessKataData:
             'kata_description'
         )
         assert process_kata_data(data) == expected
-
-
-class FormatDescriptionTest:
-
-    def test_all_lines_ok(self):
-        text = 'hello\nworld'
-        assert format_description(text) == text
-
-    def test_one_line_is_too_long(self):
-        text = 'a'*79 + 'world'
-        expected = 'a'*79 + '\nworld'
-        assert format_description(text) == expected
-
-    def test_multiple_long_lines(self):
-        text = 'a'*79 + ' hello\n' + 'b'*79 + ' world'
-        expected = 'a'*79 + '\nhello\n' + 'b'*79 + '\nworld'
-        assert format_description(text) == expected
-
-    def test_super_long_line(self):
-        text = 'a'*79 + ' ' + 'b'*79 + ' hello'
-        expected = 'a'*79 + '\n' + 'b'*79 + '\nhello'
-        assert format_description(text) == expected
