@@ -4,9 +4,9 @@ Read more about the script in the repository README
 """
 
 import os
+from os.path import isfile, join
 import re
 from itertools import repeat
-from os.path import isfile, join
 
 import concurrent.futures
 import requests
@@ -54,7 +54,9 @@ def get_rank(kata_slug, api_key):
     else:
         raise Exception(response)
 
-if __name__ == '__main__':
+
+def main():
+    """Sort katas"""
     # Paths for solutions and tests
     src_path = os.path.realpath('../src')
     tests_path = os.path.realpath('../tests')
@@ -92,8 +94,8 @@ if __name__ == '__main__':
     ranks = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         for kata, rank in zip(
-            slugs.keys(),
-            executor.map(get_rank, slugs.values(), repeat(access_key))
+                slugs.keys(),
+                executor.map(get_rank, slugs.values(), repeat(access_key))
         ):
             ranks[kata] = rank
     print('DONE')
@@ -120,3 +122,6 @@ if __name__ == '__main__':
             print('Can not find test file: %s' % source)
 
     print('\nComplete!')
+
+if __name__ == '__main__':
+    main()

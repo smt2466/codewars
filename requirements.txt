@@ -1,7 +1,10 @@
 astroid==1.4.6
+click==6.6
 colorama==0.3.7
 futures==3.0.5
+Jinja2==2.8
 lazy-object-proxy==1.2.2
+MarkupSafe==0.23
 py==1.4.31
 pylint==1.5.6
 pytest==2.9.2
