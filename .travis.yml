@@ -13,9 +13,5 @@ install:
 
 script:
   # Solutions
-  - python -m pytest --doctest-modules $SUBPATH/ tests/$SUBPATH/ tests/utils
+  - python -m pytest --doctest-modules $SUBPATH/ tests/$SUBPATH/ tests/utils/
   - python -m pylint $SUBPATH/ tests/$SUBPATH/
-
-  # Extra utils
-  - if [[ $TRAVIS_PYTHON_VERSION == 3.4 ]]; then python -m pytest --doctest-modules utils/ tests/utils/; fi
-  # - if [[ $TRAVIS_PYTHON_VERSION == 3.4 ]]; then python -m pylint utils/ tests/utils/; fi
