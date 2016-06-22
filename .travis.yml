@@ -13,7 +13,7 @@ install:
 
 script:
   # Solutions
-  - python -m pytest --doctest-modules $SUBPATH/ tests/$SUBPATH/
+  - python -m pytest --doctest-modules $SUBPATH/ tests/$SUBPATH/ tests/utils/
   - python -m pylint $SUBPATH/ tests/$SUBPATH/
 
   # Extra utils
