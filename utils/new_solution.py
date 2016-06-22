@@ -2,6 +2,7 @@
 
 from collections import namedtuple
 import os
+import sys
 
 from jinja2 import Environment, FileSystemLoader
 import requests
@@ -96,18 +97,18 @@ def main(slug, python):
     """Create new solution template"""
     access_key = get_env_variable('ACCESS_KEY')
 
-    print('Get kata data...'.ljust(STRING_LENGTH), end=' ')
+    sys.stdout.write('Get kata data...'.ljust(STRING_LENGTH))
     data = get_kata_data(slug, access_key)
-    print('DONE')
+    sys.stdout.write('DONE\n')
 
-    print('Process data...'.ljust(STRING_LENGTH), end=' '),
+    sys.stdout.write('Process data...'.ljust(STRING_LENGTH)),
     data = process_kata_data(data)
-    print('DONE')
+    sys.stdout.write('DONE\n')
 
-    print('Create solution file...'.ljust(STRING_LENGTH), end=' ')
+    sys.stdout.write('Create solution file...'.ljust(STRING_LENGTH))
     create_solution_file(data, python)
-    print('DONE')
+    sys.stdout.write('DONE\n')
 
-    print('Create test file...'.ljust(STRING_LENGTH), end=' ')
+    sys.stdout.write('Create test file...'.ljust(STRING_LENGTH))
     create_test_file(data, python)
-    print('DONE')
+    sys.stdout.write('DONE\n')
