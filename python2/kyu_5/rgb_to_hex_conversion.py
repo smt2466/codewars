@@ -37,4 +37,3 @@ def to_hex(color_code):
 def rgb(red, green, blue):
     """Convert rgb code to hex representation"""
     return to_hex(red) + to_hex(green) + to_hex(blue)
-
