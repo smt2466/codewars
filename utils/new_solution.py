@@ -60,10 +60,12 @@ def process_kata_data(data):
 def create_file(data, python, file_type):
     if file_type == 'solution':
         filename = data.slug.replace('-', '_') + '.py'
-        full_path = os.path.join(python, 'kyu_' + data.rank, filename)
+        directory = os.path.join(python, 'kyu_' + data.rank)
+        full_path = os.path.join(directory, filename)
     elif file_type == 'test':
         filename = 'test_' + data.slug.replace('-', '_') + '.py'
-        full_path = os.path.join('tests', python, 'kyu_' + data.rank, filename)
+        directory = os.path.join('tests', python, 'kyu_' + data.rank)
+        full_path = os.path.join(directory, filename)
     else:
         raise ValueError('Unknown file type')
 
@@ -79,6 +81,9 @@ def create_file(data, python, file_type):
     }
 
     template = render_template('%s.jinja2' % file_type, context) + '\n'
+
+    if not os.path.isdir(directory):
+        os.makedirs(directory)
 
     if not os.path.isfile(full_path):
         with open(full_path, 'w') as file:
