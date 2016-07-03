@@ -10,6 +10,7 @@ from python2.kyu_4.roman_numerals_decoder import solution
 EXAMPLES = (
     ('roman', 'expected'),
     [
+        ('I', 1),
         ('IV', 4),
         ('XXI', 21),
         ('MCMXC', 1990),
