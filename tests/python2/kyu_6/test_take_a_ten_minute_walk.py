@@ -25,4 +25,3 @@ class IsValidWalkTest(object):
     def test_not_loopback(self):
         walk = ['n', 's', 's', 'e', 'n', 'w', 'e', 'e', 'w', 's']
         assert isValidWalk(walk) == False
-

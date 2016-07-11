@@ -51,4 +51,3 @@ def cycle(sequence):
             if sequence[i:i + j] == sequence[i + j:i + 2*j]:
                 return [i, j]
     return []
-

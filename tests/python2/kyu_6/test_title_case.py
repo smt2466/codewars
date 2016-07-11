@@ -26,4 +26,3 @@ def test_lowercase(title, minor, result):
 
 def test_without_second_argument():
     assert title_case('the quick brown fox') == 'The Quick Brown Fox'
-

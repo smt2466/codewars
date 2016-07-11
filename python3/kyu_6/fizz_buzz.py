@@ -30,4 +30,3 @@ def solution(number):
     mul_5_not_3 = int(number//5 - number//15)
     mul_3_and_5 = int(number//15)
     return [mul_3_not_5, mul_5_not_3, mul_3_and_5]
-

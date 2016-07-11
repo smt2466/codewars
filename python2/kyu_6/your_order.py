@@ -47,4 +47,3 @@ def order(text):
         ''
     """
     return ' '.join(sorted(text.split(' '), key=get_number)) if text else ''
-

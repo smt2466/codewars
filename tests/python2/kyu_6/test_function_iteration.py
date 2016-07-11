@@ -20,4 +20,3 @@ def test_run_once():
 def test_run_twice():
     assert get_quadruple(2) == 8
     assert get_quadruple(5) == 20
-

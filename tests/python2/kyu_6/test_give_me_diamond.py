@@ -19,4 +19,3 @@ def test_big_diamond():
     expected += ' ***\n'
     expected += '  *\n'
     assert diamond(5) == expected
-

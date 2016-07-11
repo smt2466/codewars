@@ -24,4 +24,3 @@ def test_path_already_exists(tmpdir):
         mkdirp(*path)
     except OSError:
         pytest.fail('mkdirp raises error for existed directory')
-
