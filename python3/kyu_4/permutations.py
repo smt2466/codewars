@@ -15,4 +15,5 @@ from typing import List
 
 def permutations(string: str) -> List[str]:
     """Returns all string permutations"""
-    return list(''.join(perm) for perm in set(itertools.permutations(string)))
+    perms = sorted(set(itertools.permutations(string)))
+    return list(''.join(perm) for perm in perms)

@@ -10,9 +10,9 @@ from python3.kyu_4.permutations import permutations
 EXAMPLES = (
     ('string', 'expected'),
     [
-        ('a', ('a',)),
-        ('ab', ('ab', 'ba')),
-        ('aabb', ('aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa')),
+        ('a', ['a']),
+        ('ab', ['ab', 'ba']),
+        ('aabb', ['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa']),
     ]
 )
 
