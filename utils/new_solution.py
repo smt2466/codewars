@@ -35,7 +35,8 @@ def get_kata_data(slug, access_key):
     response = requests.get(url, params)
 
     if response.status_code != 200:
-        raise ValueError
+        sys.stdout.write('ERROR\n')
+        raise ValueError('Can not retrieve kata data from the server!')
     else:
         return response.json()
 
