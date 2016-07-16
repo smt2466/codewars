@@ -1,3 +1,5 @@
+# pylint: disable=bad-builtin
+
 """Autocomplete! Yay!
 http://www.codewars.com/kata/5389864ec72ce03383000484
 
