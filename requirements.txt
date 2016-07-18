@@ -10,7 +10,7 @@ mccabe==0.5.0
 mock==2.0.0
 pbr==1.10.0
 py==1.4.31
-pylint==1.6.1
+pylint==1.6.2
 pytest==2.9.2
 requests==2.10.0
 six==1.10.0
