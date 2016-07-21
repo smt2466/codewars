@@ -1,4 +1,4 @@
-"""Gray Code 
+"""Gray Code
 https://www.codewars.com/kata/gray-code
 
 Gray code is a form of binary encoding where transitions between consecutive
@@ -29,7 +29,7 @@ There are "simple" formula to implement these functions. It is a very
 interesting exercise to find them by yourself. Otherwise you can look here:
 http://mathworld.wolfram.com/GrayCode.html for formula and more information.
 
-All input will be correct binary arrays. 
+All input will be correct binary arrays.
 """
 
 
