@@ -1,6 +1,6 @@
 # pylint: disable=redefined-builtin
 
-"""Persistent Bugger.
+"""Persistent Bugger
 https://www.codewars.com/kata/persistent-bugger
 
 Write a function, `persistence`, that takes in a positive parameter `num` and
