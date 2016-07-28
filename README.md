@@ -16,64 +16,43 @@
 ## Prerequisites
 
 - [Old katas](python2/) use Python 2, [new katas](python3/) - Python 3
-- Requirements: `pip install -r requirements.txt` (`virtualenv` strongly suggested)
+- Requirements: `pip install -r requirements.txt` (`pyenv virtualenv` strongly
+  suggested)
 
 ### System Variables
 
-I used an old but good method to store sensitive information
-([API key](http://dev.codewars.com/#authentication) in our case) - via
-environment variables. So set it up before running the utils scripts or an
-error will occur. Solutions or kata tests do not rely on the system variables
+Utilities and utility tests requires Codewars [API key](http://dev.codewars.com/#authentication).
+Store it inside `utils/envs.py`:
 
-| Variable | Note |
-| :---: | :---: |
-| ACCESS_KEY | Your unique Codewars [API key](http://dev.codewars.com/#authentication) |
+```bash
+touch utils/envs.py
+echo "ACCESS_KEY='<your_api_key>'" > utils/envs.py
+```
 
 ## Tests
 
-Change `python2` to `python3` if needed
+Language version will be auto selected according to active virtual environment.
 
 ### Unit and Doc Tests
 
 ```bash
-python -m pytest --doctest-modules python2/ tests/python2/
+invoke test
 ```
 
 ### Syntax Validation
 
 ```bash
-python -m pylint python2/ tests/python2/
+invoke syntax
 ```
 
 ## Utils
 
-- [Kata Sorter](utils/kata_sorter.py) - rearranges file-mess from `src/` and
-  `tests/` by rank subfolders
-- [New Kata](utils/new_solution.py) - creates solution and test templates for
-  a given kata (calls codewars API with a given slug)
-
-### Kata Sorter
-
-Initially I did not sort solution and test files by ranks, so after a while
-I got a file-mess in both `src/` and `tests/` directories. Because of big file
-number I wrote a simple utility to auto-rearrange files between rank subfolders.
-
-I have a standard docstring at the beginning of each solution file, which
-contains url of the kata. The url itself holds slug or id of the kata.
-With this in mind we can easily connect to [Codewars API](http://dev.codewars.com/)
-and ask it about kata rank.
-
-To send HTTP requests to [Codewars API](http://dev.codewars.com/) I used
-`concurrent.futures` for better performance.
-
-### New Kata
-
-`python manage.py new <kata-slug-or-id> python2` (or `python3`)
-
-Calls to Codewars API with the given slug or id (can be extracted from the url),
-retrieves kata data (rank, description, url) and creates solution and test
-templates (based on [jinja2 templates](utils/templates/)) in the correct
-directories
+- `invoke update` - updates dependencies of Python 2 and Python 3 pyenv virtual
+  environments (`codewars2` and `codewars3`)
+- `invoke sort` - old script used for kata files sorting depends on language
+  version (uses codewars API and `concurrent.futures` for performance)
+- `invoke new <slug>` - creates new solution and test files depends on the given
+  kata slug (uses `jinja2` and codewars API)
 
 ## Contacts
 

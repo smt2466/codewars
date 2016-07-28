@@ -7,11 +7,7 @@ except ImportError:
 
 import pytest
 
-from utils.new_solution import (
-    Kata,
-    get_kata_data,
-    process_kata_data,
-)
+from utils.utils import Kata, get_kata_data, process_kata_data
 
 
 class TestGetKataData:
@@ -25,7 +21,7 @@ class TestGetKataData:
     def mock_get(self, monkeypatch):
         def inner_mock_get(answer):
             mock_get = mock.Mock(return_value=answer)
-            monkeypatch.setattr('utils.new_solution.requests.get', mock_get)
+            monkeypatch.setattr('utils.utils.requests.get', mock_get)
             return mock_get
         return inner_mock_get
 
