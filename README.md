@@ -49,7 +49,7 @@ invoke syntax
 
 - `invoke update` - updates dependencies of Python 2 and Python 3 pyenv virtual
   environments (`codewars2` and `codewars3`)
-- `invoke sort` - old script used for kata files sorting depends on language
+- `invoke sort` - was used to sort old kata files depends on the language
   version (uses codewars API and `concurrent.futures` for performance)
 - `invoke new <slug>` - creates new solution and test files depends on the given
   kata slug (uses `jinja2` and codewars API)
