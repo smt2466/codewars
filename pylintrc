@@ -1,5 +1,5 @@
 [MESSAGES CONTROL]
-disable=locally-disabled, duplicate-code
+disable=locally-disabled, duplicate-code, redefined-outer-name, no-member
 
 [REPORTS]
 # Simplify pylint reports
