@@ -16,8 +16,8 @@
 ## Prerequisites
 
 - [Old katas](python2/) use Python 2, [new katas](python3/) - Python 3
-- Requirements: `pip install -r requirements.txt` (`pyenv virtualenv` strongly
-  suggested)
+- Requirements: `pip install -r requirements.txt` (virtual environment is
+  strongly suggested)
 
 ### System Variables
 
