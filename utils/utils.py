@@ -11,6 +11,13 @@ from jinja2 import Environment, FileSystemLoader
 
 from .envs import ACCESS_KEY
 
+try:
+    # Python 2 UnicodeDecodeError fix on writing
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+except NameError:
+    pass
+
 STRING_LENGTH = 44
 SLUG_PATTERN = re.compile(r'.*/kata/([^/]*)')
 PATH = os.path.dirname(os.path.abspath(__file__))
