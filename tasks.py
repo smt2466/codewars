@@ -8,9 +8,13 @@ from utils.utils import get_python_version, new_solution, sort_katas
 
 @task
 def check_venv(ctx):
-    pyenv = os.environ.get('PYENV_VIRTUAL_ENV', False)
-    virtualenv = hasattr(sys, 'real_prefix')
-    if not virtualenv and not pyenv:
+    """Checks if virtualenv is active"""
+    pyenv = os.environ.get('PYENV_VIRTUAL_ENV', False)       # Is pyenv active?
+    virtualenv_unix = hasattr(sys, 'real_prefix')            # Is virtualenv on linux active?
+    virtualenv_windows = sys.base_prefix != sys.exec_prefix  # Is virtualenv on unix active?
+
+    # ToDo: Check if unix venv check can be removed
+    if not any([pyenv, virtualenv_unix, virtualenv_windows]):
         raise EnvironmentError('Activate virtual environment before!')
 
 
