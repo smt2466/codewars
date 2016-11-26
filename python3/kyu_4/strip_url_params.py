@@ -26,10 +26,10 @@ def strip_url_params(url, strip=()):
 
     seen = []
     new_query_params = []
-    for k, v in query_params:
-        if k not in strip and k not in seen:
-            seen.append(k)
-            new_query_params.append((k, v[0]))
+    for key, value in query_params:
+        if key not in strip and key not in seen:
+            seen.append(key)
+            new_query_params.append((key, value[0]))
     new_query_string = parse.urlencode(new_query_params, doseq=True)
 
     return parse.urlunsplit((scheme, netloc, path, new_query_string, fragment))

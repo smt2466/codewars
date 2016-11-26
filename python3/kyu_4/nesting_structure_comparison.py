@@ -17,6 +17,6 @@ def same_structure_as(original, other):
     """Compare structures of original and other objects (but not values)"""
     if not_collection(original) and not_collection(other):
         return True
-    if type(original) != type(other) or len(original) != len(other):
+    if not isinstance(original, type(other)) or len(original) != len(other):
         return False
     return all(same_structure_as(x, y) for x, y in zip(original, other))

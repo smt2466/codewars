@@ -21,7 +21,7 @@ progress through a ranking system similar to the one Codewars uses.
   towards the next rank's progress (we don't throw any progress away). The
   exception is if there is no other rank left to progress towards (Once you
   reach rank 8 there is no more progression).
-* A user cannot progress beyond rank 8. 
+* A user cannot progress beyond rank 8.
 * The only acceptable range of rank values is -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,
   5,6,7,8. Any other value should raise an error.
 

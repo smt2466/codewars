@@ -13,4 +13,17 @@ from collections import Counter
 
 
 def anagrams(goal, words):
+    """Find all anagrams of the word in the given array
+
+    Args:
+        goal (str): Word to search anagrams
+        words (list): Array of words to search for anagrams
+
+    Returns:
+        list: All goal anagrams in the words array
+
+    Examples:
+        >>> anagrams('word', ['rowd', 'orwd', 'abce'])
+        ['rowd', 'orwd']
+    """
     return [word for word in words if Counter(word) == Counter(goal)]

@@ -29,10 +29,11 @@ Notice that health can't be below 0: once hit to 0 health, a warrior attribute
 `deceased` becomes true; if hit again, the `zombie` attribute becomes true too!
 """
 
-Position = {'high': 'h', 'low': 'l'}
+POSITION = {'high': 'h', 'low': 'l'}
 
 
 class Warrior(object):
+    """Game warrior representation"""
 
     def __init__(self, name):
         # each warrior should be created with a name and 100 health points
@@ -43,18 +44,21 @@ class Warrior(object):
         self.deceased = False
         self.zombie = False
 
-    def attack(self, enemy, position):
+    @staticmethod
+    def attack(enemy, position):
+        """Attack the enemy on the given position """
         damage = 0
         # attacking high deals 10 damage, low 5
         # 0 damage if the enemy blocks in the same position
         if enemy.block != position:
-            damage += 10 if position == Position['high'] else 5
+            damage += 10 if position == POSITION['high'] else 5
         # and even more damage if the enemy is not blocking at all
         if enemy.block == "":
             damage += 5
         enemy.set_health(enemy.health - damage)
 
     def set_health(self, new_health):
+        """Updates warrior health points"""
         # health cannot have negative values
         self.health = max(0, new_health)
         # if a warrior is set to 0 health he is dead
