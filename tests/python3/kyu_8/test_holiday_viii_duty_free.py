@@ -1,20 +1,20 @@
 # pylint: disable=missing-docstring
 
-"""{{ kata.title }}."""
+"""Holiday VIII - Duty Free."""
 
 import pytest
 
-from {{ kata.python }}.kyu_{{ kata.rank }}.{{ kata.filename }} import function
+from python3.kyu_8.holiday_viii_duty_free import duty_free
 
 EXAMPLES = (
     ('args', 'expected'),
     [
-        (1, 2),
-        (3, 4),
+        ((12, 50, 1000), 166),
+        ((17, 10, 500), 294),
     ]
 )
 
 
 @pytest.mark.parametrize(*EXAMPLES)
 def test_returns_correct_result(args, expected):
-    assert function(*args) == expected
+    assert duty_free(*args) == expected
