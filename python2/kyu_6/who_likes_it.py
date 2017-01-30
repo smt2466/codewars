@@ -41,3 +41,15 @@ def likes(names):
         return first + ' and ' + second + ' like this'
     else:
         return second + ' likes this'
+    
+    # OR...
+    
+    def likes(names):
+    if not names:
+        return "no one likes this"
+    elif len(names) == 1:
+        return names[-1] + " likes this"
+    elif len(names) == 2 or len(names) == 3:
+        return ", ".join(names[:-1]) + " and " + names[-1] + " like this"
+    else:
+        return ", ".join(names[:2]) + " and " + (str(len(names)-2)) + " others like this"
